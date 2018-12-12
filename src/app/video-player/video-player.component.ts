@@ -48,12 +48,11 @@ export class VideoPlayerComponent implements OnInit,AfterViewInit {
      * You are accessing a dom element directly here,
      * so you need to call "nativeElement" first.
      */
-    this.videoplayer.nativeElement.play();
+    this.getNativeVideo().play();
   }
   onLoadedMetaData(){
     
     this.video.duration=this.getNativeVideo().duration;
-
 
     this.loaded=true;
     if(this.autoplay){

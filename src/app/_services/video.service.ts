@@ -82,12 +82,21 @@ export class VideoService {
 
   deleteMainVideo(){
     this.playList=undefined;
+    debugger;
     this.saveToStorage()
   }
 
   getVideoById(id):Promise<any>{
     return new Promise(resolve=>{
-      resolve(this.playList.playlistVideos.find(video=>video.id==id)) 
+      if(!this.playList){
+
+        this.getPlaylist().then(()=>{
+          resolve(this.playList.playlistVideos.find(video=>video.id==id)) 
+        });
+      }else{
+        resolve(this.playList.playlistVideos.find(video=>video.id==id)) 
+      }
+      
     });
   }
 

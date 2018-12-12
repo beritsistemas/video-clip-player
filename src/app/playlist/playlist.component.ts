@@ -22,7 +22,9 @@ export class PlaylistComponent implements OnInit {
 
   constructor(private videoService:VideoService
              ,private router:Router
-             ,private _hotkeysService: HotkeysService) {
+             ,private _hotkeysService: HotkeysService
+            
+             ) {
 
               var that=this;
               this._hotkeysService.add(new Hotkey('ctrl+shift+right', (event: KeyboardEvent): boolean => {
@@ -84,7 +86,11 @@ export class PlaylistComponent implements OnInit {
   }
   onDeleteVideo(video:VideoModel,index:number){
     this.videoService.deleteVideo(video.id).then(()=>{
-      this.playlist.playlistVideos.splice(index,1);
+      this.videoService.getPlaylist().then(playlist=>{//get again server list of videos, another way is to splice from current list
+        this.playlist=playlist; 
+      })
+
+      
     })
   }
   onPlayThisVideo(video:VideoModel,index:number){

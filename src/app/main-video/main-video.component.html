@@ -13,7 +13,6 @@ Init main video
                             #urlInput="ngModel"
                             (ngModelChange)="onUrlChange()"
                             required>
-            <mat-icon matPrefix>video_label</mat-icon>
             <mat-hint>Enter a video URL (not Youtube URL!)</mat-hint>
             <mat-error *ngIf="!urlInput.valid">Please enter a valid video URL</mat-error>
           </mat-form-field>

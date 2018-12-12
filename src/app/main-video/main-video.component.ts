@@ -29,7 +29,7 @@ export class MainVideoComponent implements OnInit {
          this.video=video;
          this.url=video.url;
        }else{
-         this.url="http://grochtdreis.de/fuer-jsfiddle/video/sintel_trailer-480.mp4";
+         this.url="";
        }
     })
   }
@@ -42,7 +42,7 @@ export class MainVideoComponent implements OnInit {
   loadVideo(){
     if(this.validateVideo()){
         this.video={
-          url:this.url
+          url:this.url.trim()
           ,isMain:true
         }
         this.showVideoPlayer=true;

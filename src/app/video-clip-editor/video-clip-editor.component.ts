@@ -50,13 +50,18 @@ export class VideoClipEditorComponent implements OnInit {
         })
       }else{
         this.videoService.getMainVideo().then(video=>{
-          let newVideo={
-            url:video.url
-            ,isMain:false
-            ,start:0
+          if(video){
+            let newVideo={
+              url:video.url
+              ,isMain:false
+              ,start:0
+            }
+            this.video=newVideo;
+          }else{
+            this.toastr.error("Main video doesn't exist, please add one")
           }
-          this.video=newVideo;
-        })
+          })
+         
       }
 
     })

@@ -1,40 +1,26 @@
-<mat-sidenav-container class="area-one"  >
+<mat-sidenav-container>
 
-  <!--mat-sidenav #sidenav mode="side" >
-<a href="/video/">Add  new video</a>
-</mat-sidenav-->
+  <mat-sidenav-content>
 
-<mat-sidenav-content>
-
-  <mat-toolbar  class="fixed-header white-text" color="primary"  >
- 
+        <mat-toolbar  class="fixed-header white-text" color="primary"  >
       
-         
-          <span>Video Clip Player</span>
+            
+              
+                <span>Video Clip Player</span>
 
-           <!--button (click)="sidenav.toggle()"   mat-icon-button 
-                  style="cursor:pointer;"
-                  aria-label="Menu"
-                  class="app-menu"
-                  >
-              <mat-icon>menu</mat-icon>
-          </button-->
+    
 
+                <button (click)="onNew()"  
+                      mat-icon-button 
+                        style="cursor:pointer;"
+                        >
+                    <mat-icon>add</mat-icon> New Main Video
+                </button>
+        </mat-toolbar>
 
-           <button (click)="onNew()"  
-                 mat-icon-button 
-                  style="cursor:pointer;"
-                  >
-              <mat-icon>add</mat-icon>
-          </button>
-  </mat-toolbar>
+        <router-outlet></router-outlet>
 
-
-
-<router-outlet></router-outlet>
-
-
-  </mat-sidenav-content>
+    </mat-sidenav-content>
 
 </mat-sidenav-container>
   
