@@ -1,11 +1,11 @@
-# Video Clip Editor
+## Video Clip Editor
 
 Purpose, make a clip editor in html5 to show how angular works.
 
  
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
 
-#How to use
+##How to use
 
 Add a main video URL, then start adding clips
 
