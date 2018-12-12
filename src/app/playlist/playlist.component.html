@@ -1,0 +1,65 @@
+<ng-container *ngIf="playlist&&playlist.playlistVideos">
+  <mat-card>
+  
+
+
+    <div class="row" >
+      <div class="col-md-9">
+        <ng-container *ngIf="currentVideo">
+        <app-video-player [video]="currentVideo"
+                          [autoplay]="true"
+                          (ended)="onEndedVideo()" 
+                          [showTitle]="true"
+                          >
+
+        </app-video-player>
+      </ng-container>
+      
+      </div>
+      <div class="col-md-3" > 
+
+        <ng-container *ngIf="playlist">
+      
+          <button mat-raised-button 
+                class="add-clip-btn"
+                 color="primary"
+                 (click)="addClip()">Add clip</button>
+
+          <ng-container *ngFor="let video of playlist.playlistVideos;let i=index">
+        
+              <app-playlist-video [video]="video" 
+                                  [editable]="editable&&!video.isMain" 
+                                  [isPlaying]="video.id==currentVideo.id"
+                                  (editVideo)="onEditVideo(video)" 
+                                  (deleteVideo)="onDeleteVideo(video,i)"
+                                  (playThisVideo)="onPlayThisVideo(video,i)"
+                                  >
+
+              </app-playlist-video>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 d-flex justify-content-center">
+            
+      </div>
+    </div>
+
+  </mat-card>
+</ng-container>
+
+<ng-container *ngIf="!playlist||!playlist.playlistVideos">
+    <div class="d-flex align-items-center justify-content-center init-container">
+      <div class="d-flex flex-column">
+            <span class="message">To start editing clips, please add the main video</span>
+       
+            <button mat-raised-button color="primary" (click)="addMainVideo()">
+                Add Video
+            </button>
+      </div>
+      
+    </div>
+    
+</ng-container>

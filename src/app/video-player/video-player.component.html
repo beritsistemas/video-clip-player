@@ -1,0 +1,18 @@
+<div class="embed-responsive embed-responsive-16by9">
+<video #videoplayer *ngIf="video" controls  >
+    <source [src]="getVideoUrl()"  />
+</video>
+</div>
+<ng-container *ngIf="showTitle">
+
+    <div class="d-flex flex-column">
+        <!--button mat-icon-button (click)="playVideo()">
+            <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+          </button-->
+          
+          <h1>{{video.name}}</h1>
+          <ng-container *ngIf="video.start>=0&&video.end>=0"><br>From {{video.start}}s to {{video.end}}s</ng-container>
+    </div>
+ 
+
+</ng-container>

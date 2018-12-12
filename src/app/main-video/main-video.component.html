@@ -1,0 +1,53 @@
+<!--
+Init main video
+
+-->
+<mat-card >
+  <div class="row">
+    <div class="col-12">
+        <mat-form-field  class="width100">
+            <mat-label>Main Video URL</mat-label>
+            <input matInput type="url"  
+                            [(ngModel)]="url"  
+                            name="url"  
+                            #urlInput="ngModel"
+                            (ngModelChange)="onUrlChange()"
+                            required>
+            <mat-icon matPrefix>video_label</mat-icon>
+            <mat-hint>Enter a video URL (not Youtube URL!)</mat-hint>
+            <mat-error *ngIf="!urlInput.valid">Please enter a valid video URL</mat-error>
+          </mat-form-field>
+    </div>
+    <div class="col-12 d-flex justify-content-center">
+        <button *ngIf="url" 
+                (click)="loadVideo()"
+                mat-raised-button 
+                class="load-video-btn"
+                color="primary">Load Video</button>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-12  d-flex justify-content-center">
+        <app-video-player *ngIf="showVideoPlayer" 
+                        [video]="video" 
+                        [showTitle]="true"
+                        (loadedMetaData)="onLoadedMetaData($event)"
+                        >
+
+        </app-video-player>
+    </div>
+  </div>
+  <ng-container *ngIf="video&&video.duration"> <!-- duration denotates that the video was loaded -->
+    <div class="row">
+            <div class="col-12  d-flex justify-content-center">
+                <button 
+                (click)="save()"
+                mat-raised-button 
+                class="save-video-btn"
+                color="primary">Save</button>
+            </div>
+        </div>
+  </ng-container>
+
+  
+</mat-card>
